@@ -30,7 +30,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnCadastrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -40,16 +39,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtAno = new javax.swing.JTextField();
         btnSair = new javax.swing.JButton();
         btnMostrarVeiculos = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnCadastrar.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        btnCadastrar.setText("Cadastrar");
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel1.setText("Nome:");
@@ -64,25 +56,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel4.setText("Ano:");
 
         txtNome.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
 
         txtMarca.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        txtMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMarcaActionPerformed(evt);
-            }
-        });
 
         txtAno.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        txtAno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAnoActionPerformed(evt);
-            }
-        });
 
         btnSair.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         btnSair.setText("Sair");
@@ -97,6 +74,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnMostrarVeiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMostrarVeiculosActionPerformed(evt);
+            }
+        });
+
+        btnCadastrar.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
             }
         });
 
@@ -132,7 +117,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addComponent(btnSair)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,33 +142,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(btnMostrarVeiculos)
                 .addGap(18, 18, 18)
                 .addComponent(btnSair)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        // TODO add your handling code here:
-        Veiculo veiculo = new Veiculo ();
-
-        veiculo.setNome(txtNome.getText());
-        veiculo.setMarca(txtMarca.getText());
-        veiculo.setAno(txtAno.getText());
-
-        //Salvar no Array:
-
-        if (cv.salvar(veiculo)){
-            JOptionPane.showMessageDialog(null, "Veículo cadastrado com sucesso!");
-            //Limpar os campos
-            txtNome.setText("");
-            txtMarca.setText("");
-            txtAno.setText("");
-        }else{
-            JOptionPane.showMessageDialog(null,"Erro ao cadastrar o veículo!");
-        }
-
-    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
@@ -196,17 +159,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         exv.setVisible(true);
     }//GEN-LAST:event_btnMostrarVeiculosActionPerformed
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMarcaActionPerformed
-
-    private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnoActionPerformed
+        Veiculo veiculo = new Veiculo ();
+        
+        veiculo.setNome(txtNome.getText());
+        veiculo.setMarca(txtMarca.getText());
+        veiculo.setAno(txtAno.getText());
+        
+        //Salvar no Array:
+        
+        if (cv.salvar(veiculo)){
+            JOptionPane.showMessageDialog(null, "Veículo cadastrado com sucesso!");
+            //Limpar os campos
+            txtNome.setText("");
+            txtMarca.setText("");
+            txtAno.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null,"Erro ao cadastrar o veículo!");
+        }
+        
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
