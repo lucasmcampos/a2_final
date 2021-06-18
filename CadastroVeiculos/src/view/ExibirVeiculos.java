@@ -6,6 +6,8 @@
 package view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import manipularDados.ControlaVeiculo;
 import negocio.Veiculo;
 
@@ -46,6 +48,7 @@ public class ExibirVeiculos extends javax.swing.JDialog {
             tblVeiculos.setValueAt(veiculos.get(i).getAno(), i, 2);
         }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -139,7 +142,7 @@ public class ExibirVeiculos extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblVeiculos);
 
-        btnRemover.setText("Remover todos os veículos");
+        btnRemover.setText("Remover veículo");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoverActionPerformed(evt);
@@ -182,15 +185,12 @@ public class ExibirVeiculos extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        // TODO add your handling code here:
-        ArrayList<Veiculo> veiculos = cv.retornarTodos();
-        
-        //Limpar JTable
-        
-        for(int i = 0; i < veiculos.size(); i++){
-            tblVeiculos.setValueAt("", i, 0);
-            tblVeiculos.setValueAt("", i, 1);
-            tblVeiculos.setValueAt("", i, 2);
+       DefaultTableModel dtm = (DefaultTableModel)tblVeiculos.getModel();
+        if (tblVeiculos.getSelectedRow() >= 0){
+            dtm.removeRow(tblVeiculos.getSelectedRow());
+            tblVeiculos.setModel(dtm);
+        }else{
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
         }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
